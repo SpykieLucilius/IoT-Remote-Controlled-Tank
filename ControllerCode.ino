@@ -33,8 +33,8 @@ void setup() {
 
   pinMode(32, INPUT_PULLUP); // Chenille Gauche
   pinMode(33, INPUT_PULLUP); // Chenille Droite
-  pinMode(26, INPUT_PULLUP); // Inverser Gauche 
-  pinMode(25, INPUT_PULLUP); // Inverser Droite 
+  pinMode(26, INPUT_PULLUP); // Inverser Gauche
+  pinMode(25, INPUT_PULLUP); // Inverser Droite
   pinMode(27, INPUT_PULLUP); // Tourelle Droite
   pinMode(14, INPUT_PULLUP); // Tourelle Gauche 
   pinMode(12, INPUT_PULLUP); // Tirer (A)

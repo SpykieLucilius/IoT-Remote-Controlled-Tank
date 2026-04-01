@@ -48,6 +48,9 @@ void changeRightMotorDirection() {
 
 void OnDataRecv(const uint8_t * mac, const uint8_t *incomingData, int len) {
   memcpy(&s, incomingData, sizeof(s));
+  
+  // Ligne de test pour vérifier la réception dans le Moniteur Série
+  Serial.println("Signal recu !");
 
   ledcWriteChannel(LEFT_PWM_CHANNEL, s.rightTrigger);
   ledcWriteChannel(RIGHT_PWM_CHANNEL, s.leftTrigger);
@@ -96,7 +99,10 @@ void setup() {
   turretServo.write(turretAngle); 
 
   WiFi.mode(WIFI_STA);
-  if (esp_now_init() != ESP_OK) return;
+  if (esp_now_init() != ESP_OK) {
+    Serial.println("Erreur init ESP-NOW");
+    return;
+  }
   esp_now_register_recv_cb(esp_now_recv_cb_t(OnDataRecv));
 }
 
