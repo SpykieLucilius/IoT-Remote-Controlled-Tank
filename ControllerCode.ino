@@ -1,8 +1,8 @@
 #include <esp_now.h>
 #include <WiFi.h>
 
-// REMPLACER PAR L'ADRESSE MAC DU CHAR OBTENUE PRÉCÉDEMMENT
-uint8_t broadcastAddress[] = {0x24, 0x6F, 0x28, 0x00, 0x00, 0x00};
+// Adresse MAC du char
+uint8_t broadcastAddress[] = {0x78, 0xE3, 0x6D, 0x11, 0x70, 0xC4};
 
 typedef struct struct_message {
   int leftTrigger;
@@ -35,8 +35,8 @@ void setup() {
   pinMode(33, INPUT_PULLUP); // Chenille Droite
   pinMode(25, INPUT_PULLUP); // Inverser Gauche
   pinMode(26, INPUT_PULLUP); // Inverser Droite
-  pinMode(27, INPUT_PULLUP); // Tourelle Gauche
-  pinMode(14, INPUT_PULLUP); // Tourelle Droite
+  pinMode(27, INPUT_PULLUP); // Tourelle Droite
+  pinMode(14, INPUT_PULLUP); // Tourelle Gauche 
   pinMode(12, INPUT_PULLUP); // Tirer (A)
   pinMode(13, INPUT_PULLUP); // Arrêt (X)
 }
@@ -46,8 +46,10 @@ void loop() {
   myData.rightTrigger = !digitalRead(33) ? VITESSE_FIXE : 0;
   myData.buttonY = !digitalRead(25);
   myData.buttonB = !digitalRead(26);
-  myData.dpadLeft = !digitalRead(27);
-  myData.dpadRight = !digitalRead(14);
+  
+  myData.dpadLeft = !digitalRead(14); 
+  myData.dpadRight = !digitalRead(27);
+  
   myData.buttonA = !digitalRead(12);
   myData.buttonX = !digitalRead(13);
 
